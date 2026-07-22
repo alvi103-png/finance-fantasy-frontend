@@ -1,0 +1,96 @@
+
+$color-bg-app: #0F0820;
+$color-bg-section: #150B26;
+$color-surface: #1E1035;
+$color-border: #3A2360;
+$color-border-light: #4a2f7a;
+
+$color-primary: #FF6FA5;
+$color-primary-light: #FF9FC4;
+$color-primary-gradient-top: #FF8FBB;
+$color-primary-gradient-bottom: #FF5C99;
+$color-primary-shadow: #B23768;
+
+$color-secondary: #8B5CF6;
+$color-secondary-surface: #241238;
+$color-secondary-text: #C9A8FF;
+
+$color-accent-gold: #FFC24C;
+
+$color-income: #4ADE80;
+$color-income-bg: #1B3B2A;
+$color-income-border: #245C3A;
+
+$color-expense: #FF6FA5;
+$color-expense-bg: #3E1526;
+
+$color-text-primary: #F3E8FF;
+$color-text-secondary: #B39DD1;
+$color-text-muted: #8B7AA8;
+$color-text-placeholder: #7E6B99;
+$color-text-label: #FF9FC4;
+
+$color-danger-bg: #3E1526;
+$color-danger-border: #FF6FA5;
+
+// Categoría (fondos de iconos)
+$color-cat-ropa-bg: #3A1D4E;
+$color-cat-nomina-bg: #1B3B2A;
+$color-cat-ocio-bg: #3E2A12;
+$color-cat-default-bg: #1E1035;
+
+// Tipografía
+$font-pixel: 'Press Start 2P', monospace; // solo títulos/labels destacados
+$font-body: 'Quicksand', sans-serif;      // cuerpo y UI
+
+$fs-h1: 28px;
+$fs-h2: 18px;
+$fs-h3: 13px;
+$fs-body-lg: 22px;
+$fs-body-md: 16px;
+$fs-body: 14px;
+$fs-caption: 12px;
+$fs-micro: 11px;
+
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+
+// Espaciado (escala base 4px)
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-6: 24px;
+$space-8: 32px;
+$space-12: 48px;
+$space-16: 64px;
+
+// Radios
+$radius-sm: 8px;   // chips
+$radius-md: 12px;  // inputs
+$radius-lg: 14px;  // cards, botones
+$radius-xl: 20px;  // paneles grandes
+$radius-2xl: 28px; // paneles hero
+
+// Bordes
+$border-width: 2px;
+$border-width-thick: 3px;
+
+// Sombras "pixel" (offset duro, sin blur)
+$shadow-button: 0 4px 0 $color-primary-shadow;
+$shadow-card: 3px 3px 0 $color-border-light;
+$shadow-card-lg: 4px 4px 0 $color-border;
+$shadow-hero: 10px 10px 0 $color-border;
+
+// Layout
+$sidebar-width: 220px;
+$container-desktop: 1440px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Z-index
+$z-nav: 10;
+$z-modal: 100;
+$z-toast: 200;

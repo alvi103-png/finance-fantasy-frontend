@@ -1,0 +1,160 @@
+@use 'sass:color';
+@use 'variables' as v;
+
+// Layout
+@mixin flex($direction: row, $align: stretch, $justify: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin grid($columns, $gap: v.$space-4) {
+  display: grid;
+  grid-template-columns: $columns;
+  gap: $gap;
+}
+
+// Tipografía
+@mixin font-pixel($size: v.$fs-h3, $color: v.$color-text-primary) {
+  font-family: v.$font-pixel;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin font-body($size: v.$fs-body, $weight: v.$fw-medium, $color: v.$color-text-primary) {
+  font-family: v.$font-body;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin label {
+  font-size: v.$fs-micro;
+  font-weight: v.$fw-bold;
+  color: v.$color-text-label;
+  letter-spacing: 0.5px;
+}
+
+// Superficies
+@mixin card($padding: v.$space-6, $radius: v.$radius-lg) {
+  background: v.$color-surface;
+  border: v.$border-width solid v.$color-border;
+  border-radius: $radius;
+  padding: $padding;
+  box-sizing: border-box;
+}
+
+@mixin panel-hero {
+  background: v.$color-surface;
+  border: v.$border-width-thick solid v.$color-primary;
+  border-radius: v.$radius-2xl;
+  box-shadow: v.$shadow-hero;
+}
+
+// Botones
+@mixin button-base($height: 48px, $padding: 0 24px) {
+  height: $height;
+  padding: $padding;
+  border-radius: v.$radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: v.$font-pixel;
+  font-size: v.$fs-micro;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  user-select: none;
+}
+
+@mixin button-primary($height: 48px) {
+  @include button-base($height);
+  background: linear-gradient(180deg, v.$color-primary-gradient-top, v.$color-primary-gradient-bottom);
+  border: v.$border-width solid #FFD1E3;
+  box-shadow: v.$shadow-button;
+  color: #fff;
+
+  &:hover { transform: translateY(-1px); }
+  &:active {
+    box-shadow: 0 1px 0 v.$color-primary-shadow;
+    transform: translateY(3px);
+  }
+}
+
+@mixin button-secondary($height: 48px) {
+  @include button-base($height);
+  background: v.$color-secondary-surface;
+  border: v.$border-width solid v.$color-secondary;
+  color: v.$color-secondary-text;
+
+  &:hover { background: adjust-color(v.$color-secondary-surface, $lightness: 4%); }
+}
+
+@mixin button-danger($height: 48px) {
+  @include button-base($height);
+  background: v.$color-danger-bg;
+  border: v.$border-width solid v.$color-danger-border;
+  color: v.$color-primary-light;
+}
+
+// Inputs
+@mixin input-base {
+  height: 46px;
+  border-radius: v.$radius-md;
+  border: v.$border-width solid v.$color-border;
+  background: v.$color-bg-section;
+  display: flex;
+  align-items: center;
+  padding: 0 v.$space-4;
+  font-family: v.$font-body;
+  font-size: v.$fs-body;
+  color: v.$color-text-primary;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+
+  &::placeholder { color: v.$color-text-placeholder; }
+  &:focus {
+    outline: none;
+    border-color: v.$color-primary;
+  }
+}
+
+// Iconos de categoría
+@mixin icon-badge($bg: v.$color-cat-default-bg, $size: 42px) {
+  width: $size;
+  height: $size;
+  border-radius: v.$radius-md;
+  background: $bg;
+  border: v.$border-width solid v.$color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+
+// Badges de monto
+@mixin amount-badge($positive: true) {
+  @if $positive {
+    background: v.$color-income-bg;
+    border: 1px solid v.$color-income;
+    color: v.$color-income;
+  } @else {
+    background: v.$color-expense-bg;
+    border: 1px solid v.$color-expense;
+    color: v.$color-primary-light;
+  }
+  padding: v.$space-2 v.$space-4;
+  border-radius: v.$radius-sm;
+  font-size: v.$fs-caption;
+  font-weight: v.$fw-bold;
+}
+
+// Responsive
+@mixin from($breakpoint) {
+  @media (min-width: $breakpoint) { @content; }
+}
+
+@mixin until($breakpoint) {
+  @media (max-width: $breakpoint - 1) { @content; }
+}

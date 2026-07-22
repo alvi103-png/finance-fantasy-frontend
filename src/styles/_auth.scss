@@ -1,0 +1,69 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.auth {
+  min-height: 100vh;
+  @include m.flex(column);
+  background: v.$color-bg-app;
+}
+
+// --- Header ---
+.app-header {
+  @include m.flex(row, center, space-between);
+  padding: v.$space-3 v.$space-4;
+  background: v.$color-bg-section;
+  border-bottom: v.$border-width solid v.$color-border;
+
+  &__brand { @include m.flex(row, center, flex-start, v.$space-2); }
+  &__logo  { width: 24px; height: 24px; }
+  &__title { @include m.font-pixel(v.$fs-h3, v.$color-primary); }
+  &__menu  {
+    color: v.$color-primary;
+    font-size: 22px;
+    line-height: 1;
+  }
+}
+
+// --- Cuerpo centrado ---
+.auth__body {
+  flex: 1;
+  @include m.flex(column, center, center);
+  padding: v.$space-6 v.$space-4;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 360px;
+  @include m.flex(column, stretch, flex-start, v.$space-4);
+
+  @include m.from(v.$breakpoint-tablet) { max-width: 400px; }
+}
+
+.auth-hero { width: 110px; height: auto; margin: 0 auto v.$space-2; }
+
+.auth-form__title    { @include m.font-pixel(v.$fs-h1, v.$color-text-primary); text-align: center; }
+.auth-form__subtitle { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-secondary); text-align: center; }
+.auth-form__field    { @include m.flex(column, stretch, flex-start, v.$space-1); }
+.auth-form__label    { @include m.label; text-transform: uppercase; }
+.auth-form__input    { @include m.input-base; width: 100%; }
+
+.auth-form__button {
+  @include m.button-primary;
+  width: 100%;
+  margin-top: v.$space-2;
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.auth-form__msg {
+  font-size: v.$fs-caption;
+  text-align: center;
+  &--error   { color: v.$color-expense; }
+  &--success { color: v.$color-income; }
+}
+
+.auth-form__switch {
+  @include m.font-body(v.$fs-caption, v.$fw-medium, v.$color-text-secondary);
+  text-align: center;
+
+  button { color: v.$color-primary; font-weight: v.$fw-bold; } // el "botón-link"
+}
