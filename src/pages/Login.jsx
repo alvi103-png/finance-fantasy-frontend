@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginUser } from "../services/api.js";
+import { loginUser, saveToken } from "../services/api.js";
 import Header from "../components/Header.jsx";
 import crystal from '../assets/crystal.png';
 
@@ -18,10 +18,11 @@ function Login({ onSwitch }) {
         setError("");
         setLoading(true);
         try {
-            const data = await loginUser(form);
-            localStorage.setItem("token", data.token);
+            const { email, password } = form;
+            const data = await loginUser({ email, password});
+            saveToken(data.token);
             localStorage.setItem("name", data.name);
-            // 👉 luego: redirigir al dashboard
+
         } catch (err) {
             setError(err.message);
         } finally {
