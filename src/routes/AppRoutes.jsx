@@ -8,10 +8,10 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 const AppRoutes = () => {
     return (
         <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route element={<App />}>
-                <Route path="/login" element={<Login />} />
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
                 <Route path="/dashboard" element={
                     <ProtectedRoute><Dashboard /></ProtectedRoute>
                 } />

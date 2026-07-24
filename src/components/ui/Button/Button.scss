@@ -1,0 +1,11 @@
+@use '../../../styles/mixins' as m;
+
+.btn {
+  &--main { @include m.button-primary; }
+  &--edit { @include m.button-secondary; }
+  &--delete { @include m.button-danger(); }
+
+  &--full { width: 100%; }
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
