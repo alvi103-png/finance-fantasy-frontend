@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { clearToken } from "../../services/api.js";
+import { clearToken } from "../../../services/api.js";
 import { Menu, Close } from 'pixelarticons/react'
-import crystal from '../../assets/crystal.png'
+import crystal from '../../../assets/crystal.png'
 import './Header.scss'
-import Modal from '../Modal/Modal.jsx'
+import Modal from '../../ui/Modal/Modal.jsx'
 
 function Header() {
     const [open, setOpen] = useState(false)
@@ -14,6 +14,7 @@ function Header() {
 
     const handleLogout = () => {
         clearToken()
+        setConfirmLogout(false)
         closeMenu()
         navigate("/login")
     }
@@ -26,11 +27,9 @@ function Header() {
             </div>
 
             <nav className={`app-header__nav ${open ? "is-open" : ""}`}>
-                {}
                 <NavLink to="/dashboard" className="app-header__link" onClick={closeMenu}>Dashboard</NavLink>
                 <NavLink to="/transacciones" className="app-header__link" onClick={closeMenu}>Transacciones</NavLink>
                 <NavLink to="/resumen" className="app-header__link" onClick={closeMenu}>Resumen</NavLink>
-                {}
                 <button className="app-header__logout" onClick={() => setConfirmLogout(true)}>
                     Cerrar sesión
                 </button>
@@ -53,11 +52,9 @@ function Header() {
 
                 <p className="modal__text">¿Seguo que quieres salir de tu cuenta?</p>
                 <div className="modal__actions">
-                    {}
                     <button className="modal__btn--ghost" onClick={() => setConfirmLogout(false)}>
                         Cancelar
                     </button>
-                    {}
                     <button className="modal__btn--danger" onClick={handleLogout}>
                         Salir
                     </button>

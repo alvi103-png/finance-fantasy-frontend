@@ -1,5 +1,5 @@
-@use '../../styles/mixins' as m;
-@use '../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+@use '../../../styles/variables' as v;
 
 .app-header {
   @include m.flex(row, center, space-between);
