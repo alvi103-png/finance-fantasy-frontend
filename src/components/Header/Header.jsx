@@ -1,4 +1,4 @@
-import crystal from '../assets/crystal.png'
+import crystal from '../../assets/crystal.png'
 
 function Header() {
     return (
