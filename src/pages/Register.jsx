@@ -1,9 +1,10 @@
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { registerUser } from "../services/api.js";
-import Header from "../components/Header.jsx";
+import { registerUser, saveToken } from "../services/api.js";
 import crystal from "../assets/crystal.png";
 
-function Register({ onSwitch }) {
+function Register() {
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
     const [error, setError] = useState("");
@@ -39,9 +40,10 @@ function Register({ onSwitch }) {
                 email: form.email,
                 password: form.password,
             });
-            localStorage.setItem("token", data.token);
+            saveToken(data.token);
             localStorage.setItem("name", data.name);
             setSuccess(`Bienvenid@, ${data.name}! 🎮`);
+            navigate("/dashboard");
         } catch (err) {
             setError(err.message);
         } finally {
@@ -51,7 +53,6 @@ function Register({ onSwitch }) {
 
     return (
         <div className="auth">
-            <Header />
             <div className="auth__body">
                 <form className="auth-form" onSubmit={handleSubmit}>
                     <img className="auth-hero" src={crystal} alt="Cristal Finance Fantasy" />
@@ -91,7 +92,7 @@ function Register({ onSwitch }) {
 
                     {/* Link para cambiar a login. Es un <button> por accesibilidad. */}
                     <p className="auth-form__switch">
-                        ¿Ya tienes cuenta? <button type="button" onClick={onSwitch}>Inicia sesión</button>
+                        ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
                     </p>
                 </form>
             </div>

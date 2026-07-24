@@ -1,9 +1,11 @@
+
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { loginUser } from "../services/api.js";
-import Header from "../components/Header.jsx";
+import { loginUser, saveToken } from "../services/api.js";
 import crystal from '../assets/crystal.png';
 
-function Login({ onSwitch }) {
+function Login() {
+    const navigate = useNavigate();
     const [form, setForm] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -18,10 +20,12 @@ function Login({ onSwitch }) {
         setError("");
         setLoading(true);
         try {
-            const data = await loginUser(form);
-            localStorage.setItem("token", data.token);
+            const { email, password } = form;
+            const data = await loginUser({ email, password});
+            saveToken(data.token);
             localStorage.setItem("name", data.name);
-            // 👉 luego: redirigir al dashboard
+            navigate("/dashboard");
+
         } catch (err) {
             setError(err.message);
         } finally {
@@ -31,7 +35,6 @@ function Login({ onSwitch }) {
 
     return (
         <div className="auth">
-            <Header />
             <div className="auth__body">
                 <form className="auth-form" onSubmit={handleSubmit}>
                     <img className="auth-hero" src={crystal} alt="Cristal Finance Fantasy" />
@@ -57,7 +60,7 @@ function Login({ onSwitch }) {
                     {error && <p className="auth-form__msg auth-form__msg--error">{error}</p>}
 
                     <p className="auth-form__switch">
-                        ¿Nueva aquí? <button type="button" onClick={onSwitch}>Crear cuenta</button>
+                        ¿Nueva aquí? <Link to="/register">Crea cuenta</Link>
                     </p>
                 </form>
             </div>

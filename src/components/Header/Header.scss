@@ -1,0 +1,99 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.app-header {
+  @include m.flex(row, center, space-between);
+  position: sticky;
+  top: 0;
+  z-index: v.$z-nav;
+  padding: v.$space-3 v.$space-4;
+  background: v.$color-bg-section;
+  border-bottom: v.$border-width solid v.$color-border;
+
+&__brand {
+  @include m.flex(row, center, flex-start, v.$space-2);
+}
+
+  &__logo {
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+  }
+
+  &__title {
+    @include m.font-pixel(v.$fs-h3, v.$color-text-primary)
+  }
+
+  //mobil
+  &__nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: v.$z-modal;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$space-6;
+    padding: v.$space-8;
+    background: v.$color-bg-section;
+
+    &.is-open {
+      display: flex;
+    }
+
+    @include m.from(v.$breakpoint-tablet) {
+      display: flex;
+      position: static;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      background: none;
+      z-index: auto;
+      padding: 0;
+      border: none;
+      gap: v.$space-4;
+    }
+  }
+
+  &__link {
+    @include m.font-body(v.$fs-body, v.$fw-semibold, v.$color-text-secondary);
+    text-decoration: none;
+    padding: v.$space-2 v.$space-3;
+    border-radius: v.$radius-sm;
+    transition: color 0.15s ease, background 0.15s ease;
+
+    &:hover {
+      color: v.$color-text-primary
+    }
+
+    &.active {
+      color: v.$color-primary;
+      background: v.$color-secondary-surface;
+    }
+  }
+
+  &__logout {
+    @include m.button-danger(40px)
+  }
+
+  //menu hamburguesa
+  &__menu {
+    position: relative;
+    z-index: v.$z-toast;
+    display: flex;
+    align-items: center;
+    padding: v.$space-1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: v.$color-text-primary;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    @include m.from(v.$breakpoint-tablet) {
+      display: none;
+    }
+  }
+  }

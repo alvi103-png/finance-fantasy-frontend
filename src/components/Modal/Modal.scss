@@ -1,0 +1,47 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.modal {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: v.$z-toast;
+    background: rgb(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: v.$space-4;
+  }
+
+  &__text {
+    color: v.$color-text-secondary;
+    margin-bottom: v.$space-6;
+  }
+
+  &__actions {
+    @include m.flex(row, center, center, v.$space-3);
+  }
+
+  &__btn--ghost {
+    @include m.button-secondary(44px);
+    flex: 1;
+  }
+  &__btn--danger {
+    @include m.button-danger(44px);
+    flex: 1;
+    &:hover { filter: brightness(1.15); }
+  }
+
+  &__box {
+    @include m.panel-hero;
+    width: 100%;
+    max-width: 360px;
+    padding: v.$space-6;
+    text-align: center;
+  }
+
+  &__title {
+    @include m.font-pixel(v.$fs-h2, v.$color-text-primary);
+    margin-bottom: v.$space-4;
+  }
+}

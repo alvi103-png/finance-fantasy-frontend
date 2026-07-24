@@ -7,22 +7,6 @@
   background: v.$color-bg-app;
 }
 
-// --- Header ---
-.app-header {
-  @include m.flex(row, center, space-between);
-  padding: v.$space-3 v.$space-4;
-  background: v.$color-bg-section;
-  border-bottom: v.$border-width solid v.$color-border;
-
-  &__brand { @include m.flex(row, center, flex-start, v.$space-2); }
-  &__logo  { width: 24px; height: 24px; }
-  &__title { @include m.font-pixel(v.$fs-h3, v.$color-primary); }
-  &__menu  {
-    color: v.$color-primary;
-    font-size: 22px;
-    line-height: 1;
-  }
-}
 
 // --- Cuerpo centrado ---
 .auth__body {
