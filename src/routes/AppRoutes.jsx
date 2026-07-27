@@ -5,6 +5,7 @@ import Register from '../pages/Register.jsx'
 import Dashboard from '../pages/Dashboard/Dashboard.jsx'
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import NewTransaction from '../pages/NewTransaction/NewTransaction.jsx'
+import Transactions from '../pages/Transactions/Transactions.jsx'
 
 const AppRoutes = () => {
     return (
@@ -18,6 +19,9 @@ const AppRoutes = () => {
                 } />
                 <Route path="/new" element={
                     <ProtectedRoute><NewTransaction /></ProtectedRoute>
+                } />
+                <Route path="/transactions" element={
+                    <ProtectedRoute><Transactions /></ProtectedRoute>
                 } />
             </Route>
         </Routes>

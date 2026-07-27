@@ -25,10 +25,10 @@ async function request(endpoint, { method = "GET", body} = {}) {
         ...(body && { body: JSON.stringify(body) }),
     });
 
+    if (response.status === 204) return null;
+
     const data = await response.json();
-
     if (!response.ok) {
-
         throw new Error(data.message || "Ocurrió un error inesperado.");
     }
     return data;
@@ -73,4 +73,8 @@ export function getTransactions({ year, month, category } = {}) {
 
 export function createTransaction(payload) {
     return request("/transactions", {method: "POST", body: payload});
+}
+
+export function deleteTransaction(Id) {
+    return request(`/transactions/${Id}`, {method: "DELETE"});
 }

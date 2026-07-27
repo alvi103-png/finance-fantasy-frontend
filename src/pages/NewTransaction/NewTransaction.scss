@@ -50,15 +50,6 @@
     &:focus { outline: none; }
   }
 
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  -moz-appearance: textfield;
-  appearance: textfield;
-
   &__currency {
     @include m.font-pixel(v.$fs-h1, v.$color-text-muted);
     opacity: 0;
@@ -82,6 +73,15 @@
     &.is-selected { border-color: v.$color-primary; color: v.$color-primary; }
   }
 
-  &__input { @include m.input-base; width: 100%; }
+  &__input {
+    @include m.input-base;
+    width: 100%;
+
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+    }
+  }
+
   &__error { @include m.font-body(v.$fs-caption, v.$fw-medium, v.$color-expense); }
 }
