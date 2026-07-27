@@ -39,6 +39,11 @@
     box-shadow: v.$shadow-button;
     color: #fff;
     cursor: pointer;
+    z-index: v.$z-nav;
+
+    @include m.until(v.$breakpoint-tablet){
+      bottom: 88px;
+    }
 
     svg { width: 24px; height: 24px; }
 
