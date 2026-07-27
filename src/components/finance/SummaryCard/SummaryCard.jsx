@@ -1,3 +1,4 @@
+import { ArrowUp, ArrowDown } from 'pixelarticons/react'
 import './SummaryCard.scss'
 
 function SummaryCard({ variant = 'income', label, amount }) {
@@ -10,11 +11,11 @@ function SummaryCard({ variant = 'income', label, amount }) {
     }).format(amount ?? 0)
 
     return (
-        <div className="SummaryCard">
-            <span className="SummaryCard__label">
-                {isIncome ? '▲' : '▼'} {label}
+        <div className={`summary-card summary-card--${variant}`}>
+            <span className="summary-card__label">
+                {isIncome ? <ArrowUp /> : <ArrowDown />} {label}
             </span>
-            <span className="SummaryCard__amount">{formatted}</span>
+            <span className="summary-card__amount">{formatted}</span>
         </div>
     )
 }

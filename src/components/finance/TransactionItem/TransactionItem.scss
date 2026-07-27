@@ -8,6 +8,9 @@
   &__icon {
     @include m.icon-badge;
     flex-shrink: 0;
+    color: v.$color-secondary-text;   // color del trazo del icono
+    svg { width: 20px; height: 20px; } // ajusta el tamaño del SVG dentro del badge
+
   }
 
   &__info {
