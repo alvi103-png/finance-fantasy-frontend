@@ -70,3 +70,7 @@ export function getTransactions({ year, month, category } = {}) {
     const qs = params.toString();
     return request(`/transactions${qs ? `?${qs}` : ""}`)
 }
+
+export function createTransaction(payload) {
+    return request("/transactions", {method: "POST", body: payload});
+}
