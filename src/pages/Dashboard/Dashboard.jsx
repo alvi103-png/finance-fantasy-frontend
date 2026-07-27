@@ -8,10 +8,12 @@ import {
     ShoppingBag,
     Sunglasses,
     Coins,
-    Sparkles
+    Sparkles,
+    Plus
 } from 'pixelarticons/react'
 import {useEffect, useState} from "react";
 import {getSummary, getTransactions} from "../../services/api.js";
+import { useNavigate } from "react-router-dom";
 import TransactionItem from "../../components/finance/TransactionItem/TransactionItem.jsx";
 import './Dashboard.scss'
 
@@ -27,6 +29,7 @@ const CATEGORY_ICONS = {
     NOMINA: Coins,
     EXTRAS: Sparkles,
 };
+
 
 const toEuro = (n) =>
     new Intl.NumberFormat("es-ES", {
@@ -45,7 +48,8 @@ function Dashboard() {
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const navigate = useNavigate();
+    
     useEffect(() => {
         async function load() {
             try {
@@ -71,6 +75,8 @@ function Dashboard() {
     const recent = [...transactions]
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .slice(0, 4);
+
+
 
     return (
         <div className="dashboard">
@@ -107,6 +113,14 @@ function Dashboard() {
                     }))
                 }
             </section>
+
+            <button
+                className="dashboard__fab"
+                onClick={() => navigate("/new")}
+                aria-label="Nueva transacción"
+                >
+                <Plus />
+            </button>
         </div>
     );
 }

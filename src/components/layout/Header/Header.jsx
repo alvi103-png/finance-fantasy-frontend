@@ -28,8 +28,8 @@ function Header() {
 
             <nav className={`app-header__nav ${open ? "is-open" : ""}`}>
                 <NavLink to="/dashboard" className="app-header__link" onClick={closeMenu}>Dashboard</NavLink>
-                <NavLink to="/transacciones" className="app-header__link" onClick={closeMenu}>Transacciones</NavLink>
-                <NavLink to="/resumen" className="app-header__link" onClick={closeMenu}>Resumen</NavLink>
+                <NavLink to="/transactions" className="app-header__link" onClick={closeMenu}>Transacciones</NavLink>
+                <NavLink to="/summary" className="app-header__link" onClick={closeMenu}>Resumen</NavLink>
                 <button className="app-header__logout" onClick={() => setConfirmLogout(true)}>
                     Cerrar sesión
                 </button>
