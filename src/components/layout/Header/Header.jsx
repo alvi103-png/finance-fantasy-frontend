@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { clearToken } from "../../services/api.js";
+import { clearToken } from "../../../services/api.js";
 import { Menu, Close } from 'pixelarticons/react'
-import crystal from '../../assets/crystal.png'
+import crystal from '../../../assets/crystal.png'
 import './Header.scss'
-import Modal from '../Modal/Modal.jsx'
+import Modal from '../../ui/Modal/Modal.jsx'
 
 function Header() {
     const [open, setOpen] = useState(false)
