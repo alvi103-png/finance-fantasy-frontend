@@ -5,7 +5,6 @@ import { Heart } from '@nsmr/pixelart-react';
 const Footer = () => {
     return (
         <footer className="footer">
-            {}
             <span className="footer-title">Finance Fantasy © {new Date().getFullYear()}</span>
             <Heart size={18}/>
 
