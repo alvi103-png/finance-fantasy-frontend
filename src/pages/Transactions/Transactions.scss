@@ -1,0 +1,45 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.transactions {
+  @include m.flex(column, stretch, flex-start, v.$space-4);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: v.$space-6 v.$space-4;
+
+  &__header { @include m.flex(row, center, flex-start, v.$space-2); }
+
+  &__back {
+    @include m.flex(row, center, center);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: v.$color-text-secondary;
+    svg { width: 24px; height: 24px; }
+    &:hover { color: v.$color-primary; }
+  }
+
+  &__title   { @include m.font-pixel(v.$fs-h2); }
+
+  &__filters { @include m.flex(column, stretch, flex-start, v.$space-3); }
+
+  &__chips   { @include m.flex(row, center, flex-start, v.$space-2); flex-wrap: wrap; }
+
+  &__chip {
+    @include m.font-body(v.$fs-caption, v.$fw-bold, v.$color-text-secondary);
+    padding: v.$space-1 v.$space-3;
+    border-radius: v.$radius-sm;
+    border: v.$border-width solid v.$color-border;
+    background: v.$color-surface;
+    cursor: pointer;
+    &.is-active { background: v.$color-primary; border-color: v.$color-primary; color: #fff; }
+  }
+
+  &__select { @include m.input-base; width: 100%; }
+
+  &__list  { @include m.flex(column, stretch, flex-start, v.$space-3); }
+
+  &__empty { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-muted); text-align: center; }
+  &__error { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-expense); }
+}

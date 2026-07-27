@@ -1,0 +1,54 @@
+@use '../../../styles/mixins' as m;
+@use '../../../styles/variables' as v;
+
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  &__trigger {
+    @include m.input-base;
+    @include m.flex(row, center, space-between, v.$space-2);
+    width: 100%;
+    cursor: pointer;
+    color: v.$color-text-primary;
+
+    svg {
+      width: 18px; height: 18px;
+      color: v.$color-text-secondary;
+      transition: transform 0.15s ease;
+    }
+    &.is-open { border-color: v.$color-primary; }
+    &.is-open svg { transform: rotate(180deg); }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + #{v.$space-1});
+    left: 0;
+    right: 0;
+    z-index: v.$z-nav;
+    margin: 0;
+    padding: v.$space-1;
+    list-style: none;
+    background: v.$color-surface;
+    border: v.$border-width solid v.$color-border-light;
+    border-radius: v.$radius-md;
+    box-shadow: v.$shadow-card;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+
+  &__option {
+    @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-secondary);
+    width: 100%;
+    text-align: left;
+    padding: v.$space-2 v.$space-3;
+    background: transparent;
+    border: none;
+    border-radius: v.$radius-sm;
+    cursor: pointer;
+
+    &:hover      { background: v.$color-secondary-surface; color: v.$color-text-primary; }
+    &.is-selected { background: v.$color-primary; color: #fff; }
+  }
+}
