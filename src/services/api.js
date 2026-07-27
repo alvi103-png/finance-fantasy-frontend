@@ -57,3 +57,16 @@ export function registerUser({ name, email, password }) {
 export function loginUser({ email, password }) {
     return post("/auth/login", { email, password});
 }
+
+export function getSummary({ year, month }) {
+    return request(`/transactions/summary?year=${year}&month=${month}`);
+}
+
+export function getTransactions({ year, month, category } = {}) {
+    const params = new URLSearchParams();
+    if (year) params.append("year", year);
+    if (month) params.append("month", month);
+    if (category) params.append("category", category);
+    const qs = params.toString();
+    return request(`/transactions${qs ? `?${qs}` : ""}`)
+}

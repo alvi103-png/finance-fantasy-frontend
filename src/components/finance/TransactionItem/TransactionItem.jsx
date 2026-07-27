@@ -1,4 +1,4 @@
-import { Edit, Trash} from '@nsmr/pixelart-react'
+import { Pencil, Trash} from 'pixelarticons/react'
 import './TransactionItem.scss'
 
 function TransactionItem({
@@ -42,7 +42,7 @@ function TransactionItem({
             {showAction && (
                 <div className="tx-item__action">
                     <button className="tx-item__action" onClick={onEdit} aria-label="Editar">
-                        <Edit />
+                        <Pencil />
                     </button>
                     <button className="tx-item__action" onClick={onDelete} aria-label="Eliminar">
                         <Trash />
