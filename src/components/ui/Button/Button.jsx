@@ -1,31 +1,25 @@
-import './Button.scss';
+import './Button.scss'
 
 function Button({
-                    children,
-                    variant = 'main',
-                    type = 'button',
-                    fullWidth = false,
-                    disabled = false,
-                    onClick,
-                    ...rest              // deja pasar props extra (aria-label, etc.)
-                }) {
+    children,
+    variant = 'primary',
+    fullWidth = false,
+    type = 'button',
+    className = '',
+    ...rest
+}) {
     const classes = [
         'btn',
         `btn--${variant}`,
         fullWidth ? 'btn--full' : '',
-    ].filter(Boolean).join(' '); // une las clases y descarta las vacías
+        className,
+    ].filter(Boolean).join(' ')
 
     return (
-        <button
-            className={classes}
-            type={type}
-            disabled={disabled}
-            onClick={onClick}
-            {...rest}
-        >
+        <button type={type} className={classes} {...rest}>
             {children}
         </button>
-    );
+    )
 }
 
-export default Button;
+export default Button

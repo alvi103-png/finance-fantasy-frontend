@@ -1,0 +1,41 @@
+@use '../../../styles/mixins' as m;
+@use '../../../styles/variables' as v;
+
+.tx-item {
+  @include m.flex(row, center, flex-start, v.$space-3);
+  @include m.card(v.$space-3, v.$radius-md);
+
+  &__icon {
+    @include m.icon-badge;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    @include m.flex(column, flex-start, center, 2px);
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title { @include m.font-body(v.$fs-body, v.$fw-semibold); }
+  &__meta  { @include m.font-body(v.$fs-caption, v.$fw-medium, v.$color-text-muted); }
+
+  &__amount {
+    @include m.font-body(v.$fs-body, v.$fw-bold);
+    white-space: nowrap;
+    &--income  { color: v.$color-income; }
+    &--expense { color: v.$color-expense; }
+  }
+
+  &__actions { @include m.flex(row, center, flex-start, v.$space-1); }
+
+  &__action {
+    @include m.flex(row, center, center);
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    color: v.$color-text-secondary;
+    cursor: pointer;
+    &:hover { color: v.$color-primary; }
+  }
+}

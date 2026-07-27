@@ -1,9 +1,19 @@
 @use '../../../styles/mixins' as m;
+@use '../../../styles/variables' as v;
 
 .btn {
-  &--main { @include m.button-primary; }
-  &--edit { @include m.button-secondary; }
-  &--delete { @include m.button-danger(); }
+  &--primary { @include m.button-primary; }
+  &--secondary { @include  m.button-secondary; }
+  &--danger { @include m.button-danger; }
+
+  &--edit {
+    @include m.button-base;
+    background: transparent;
+    border: v.$border-width solid v.$color-secondary;
+    color: v.$color-secondary-text;
+
+    &:hover { background: v.$color-secondary-surface; }
+  }
 
   &--full { width: 100%; }
 
