@@ -12,7 +12,7 @@ function SummaryCard({ variant = 'income', label, amount }) {
 
     return (
         <div className={`summary-card summary-card--${variant}`}>
-            <span className="Summary-card__label">
+            <span className="summary-card__label">
                 {isIncome ? <ArrowUp /> : <ArrowDown />} {label}
             </span>
             <span className="summary-card__amount">{formatted}</span>

@@ -40,7 +40,7 @@ function TransactionItem({
             </span>
 
             {showAction && (
-                <div className="tx-item__action">
+                <div className="tx-item__actions">
                     <button className="tx-item__action" onClick={onEdit} aria-label="Editar">
                         <Pencil />
                     </button>
