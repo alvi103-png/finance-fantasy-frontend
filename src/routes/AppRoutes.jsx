@@ -6,6 +6,7 @@ import Dashboard from '../pages/Dashboard/Dashboard.jsx'
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import NewTransaction from '../pages/NewTransaction/NewTransaction.jsx'
 import Transactions from '../pages/Transactions/Transactions.jsx'
+import Statistics from '../pages/Statistics/Statistics.jsx'
 
 const AppRoutes = () => {
     return (
@@ -22,6 +23,9 @@ const AppRoutes = () => {
                 } />
                 <Route path="/transactions" element={
                     <ProtectedRoute><Transactions /></ProtectedRoute>
+                } />
+                <Route path="/summary" element={
+                    <ProtectedRoute><Statistics /></ProtectedRoute>
                 } />
             </Route>
         </Routes>
