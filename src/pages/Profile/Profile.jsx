@@ -21,7 +21,7 @@ function Profile() {
     const logout = () => {
         clearToken();
         localStorage.removeItem("name");
-        navigate("/login");
+        navigate("/");
     };
 
     const handleDelete = async () => {
@@ -30,7 +30,7 @@ function Profile() {
             await deleteAccount();
             clearToken();
             localStorage.removeItem("name");
-            navigate("/register");
+            navigate("/");
         } catch (err) {
             setError(err.message);
             setDeleting(false);
