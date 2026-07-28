@@ -85,7 +85,7 @@
 
   &__error { @include m.font-body(v.$fs-caption, v.$fw-medium, v.$color-expense); }
 
-  .cat-desc {
+  &__cat-desc {
     margin-top: v.$space-2;
     @include m.font-body(v.$fs-caption, v.$fw-medium, v.$color-text-secondary);
     line-height: 1.4;

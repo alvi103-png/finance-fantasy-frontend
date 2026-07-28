@@ -124,14 +124,6 @@ function Dashboard() {
                     </>
                 )}
             </section>
-
-            <button
-                className="dashboard__fab"
-                onClick={() => navigate("/new")}
-                aria-label="Nueva transacción"
-            >
-                <Plus/>
-            </button>
         </div>
     );
 }
