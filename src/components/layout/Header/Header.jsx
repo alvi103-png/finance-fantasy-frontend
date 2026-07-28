@@ -12,9 +12,9 @@ function Header() {
 
             <nav className="app-header__nav">
                 <NavLink to="/dashboard" className="app-header__link">Dashboard</NavLink>
-                <NavLink to="/transactions" className="app-header__link">Transacciones</NavLink>
-                <NavLink to="/summary" className="app-header__link">Resumen</NavLink>
-                <NavLink to="/profile" className="app-header__link">Perfil</NavLink>
+                <NavLink to="/transactions" className="app-header__link">Movs</NavLink>
+                <NavLink to="/summary" className="app-header__link">Stats</NavLink>
+                <NavLink to="/profile" className="app-header__link">Gamer</NavLink>
             </nav>
         </header>
     );

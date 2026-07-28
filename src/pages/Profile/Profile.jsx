@@ -27,7 +27,7 @@ function Profile() {
     const handleDelete = async () => {
         try {
             setDeleting(true);
-            await deleteAccount()
+            await deleteAccount();
             clearToken();
             localStorage.removeItem("name");
             navigate("/register");

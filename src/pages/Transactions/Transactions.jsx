@@ -75,7 +75,7 @@ function Transactions() {
                 <button className="transactions__back" onClick={() => navigate("/dashboard")} aria-label="Volver">
                     <ArrowLeft />
                 </button>
-                <h1 className="transactions__title">Transacciones</h1>
+                <h1 className="transactions__title">Movs</h1>
             </div>
 
             <div className="transactions__filters">
