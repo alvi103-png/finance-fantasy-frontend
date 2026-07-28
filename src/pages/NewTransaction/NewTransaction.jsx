@@ -28,6 +28,7 @@ function NewTransaction() {
     const [loading, setLoading] = useState(isEdit);
 
     const categories = categoriesByType(type);
+    const selectedCat = categories.find((c) => c.value === category);
 
     useEffect(() => {
         if (!isEdit) return;
@@ -146,6 +147,9 @@ function NewTransaction() {
                         </button>
                     ))}
                 </div>
+                    {selectedCat && (
+                        <p className="new-tx__cat-desc">{selectedCat.desc}</p>
+                    )}
             </div>
 
             <div className="new-tx__field">

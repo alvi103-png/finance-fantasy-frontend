@@ -7,12 +7,17 @@
   left: 0;
   right: 0;
   z-index: v.$z-nav;
-  @include m.flex(row, stretch, space-around);
-  padding: v.$space-2 v.$space-1;
+  @include m.flex(row, center, space-between);
+  padding: v.$space-2;
   background: v.$color-bg-section;
   border-top: v.$border-width solid v.$color-border;
 
   @include m.from(v.$breakpoint-tablet) { display: none; }
+
+  &__group {
+    flex: 1;
+    @include m.flex(row, stretch, space-around);
+  }
 
   &__item {
     @include m.flex(column, center, center, v.$space-1);
@@ -28,5 +33,25 @@
   &__label {
     @include m.font-pixel(v.$fs-micro);
     color: inherit;
+  }
+
+  &__fab {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    margin-top: -22px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, v.$color-primary-gradient-top, v.$color-primary-gradient-bottom);
+    border: v.$border-width-thick solid #FFD1E3;
+    box-shadow: v.$shadow-button;
+    color: #fff;
+    @include m.flex(row, center, center);
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+    svg { width: 26px; height: 26px; }
+
+    &:active {
+      box-shadow: 0 1px 0 v.$color-primary-shadow;
+      transform: translateY(3px);
+    }
   }
 }
