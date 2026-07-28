@@ -1,0 +1,64 @@
+@use '../../../styles/variables' as v;
+
+.health-bar {
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: v.$space-2;
+  }
+
+  &__label {
+    font-family: v.$font-pixel;
+    font-size: v.$fs-micro;
+    letter-spacing: 1px;
+  }
+
+  &__value {
+    font-family: v.$font-pixel;
+    font-size: v.$fs-micro;
+  }
+
+  &__track {
+    position: relative;
+    height: 22px;
+    padding: 2px;
+    background: v.$color-bg-section;
+    border: v.$border-width solid v.$color-border;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    width: 0;
+    transition: width 0.9s ease-out;
+  }
+
+  &__segments {
+    position: absolute;
+    inset: 2px;
+    pointer-events: none;
+
+    background-image: repeating-linear-gradient(
+            to right,
+            transparent 0,
+            transparent 14px,
+            v.$color-bg-section 14px,
+            v.$color-bg-section 16px
+    );
+  }
+
+  &--income {
+    .health-bar__label,
+    .health-bar__value { color: v.$color-income; }
+    .health-bar__track { border-color: v.$color-income-border; }
+    .health-bar__fill  { background: v.$color-income; }
+  }
+
+  &--expense {
+    .health-bar__label,
+    .health-bar__value { color: v.$color-expense; }
+    .health-bar__track { border-color: v.$color-danger-border; }
+    .health-bar__fill  { background: v.$color-expense; }
+  }
+}
