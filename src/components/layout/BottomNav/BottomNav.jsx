@@ -7,7 +7,7 @@ function BottomNav() {
         <nav className="bottom-nav">
             <NavLink to="/dashboard" className="bottom-nav__item">
                 <Home />
-                <span className="bottom-nav__label">Inicio</span>
+                <span className="bottom-nav__label">Home</span>
             </NavLink>
             <NavLink to="/transactions" className="bottom-nav__item">
                 <Notes />
