@@ -1,0 +1,39 @@
+@use '../../../styles/variables' as v;
+
+.stat-bar {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+
+  &__label {
+    width: 110px;
+    flex-shrink: 0;
+    font-size: v.$fs-caption;
+    color: v.$color-text-secondary;
+  }
+
+  &__track {
+    flex: 1;
+    height: 14px;
+    padding: 1px;
+    background: v.$color-bg-section;
+    border: v.$border-width solid v.$color-border;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    width: 0;
+    background: v.$color-secondary;
+    transition: width 0.9s ease-out;
+  }
+
+  &__value {
+    width: 60px;
+    flex-shrink: 0;
+    text-align: right;
+    font-size: v.$fs-caption;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text-primary;
+  }
+}

@@ -1,0 +1,34 @@
+@use '../../../styles/mixins' as m;
+@use '../../../styles/variables' as v;
+
+.summary-card {
+  @include m.flex(column, flex-start, center, v.$space-1);
+  border-radius: v.$radius-lg;
+  border: v.$border-width solid v.$color-border;
+  padding: v.$space-3 v.$space-4;
+
+  &__label {
+    @include m.font-pixel(v.$fs-micro);
+    letter-spacing: 0.5px;
+  }
+
+  &__amount {
+    @include m.font-pixel(v.$fs-body-lg);
+  }
+
+  // Ingresos: verde
+  &--income {
+    background: v.$color-income-bg;
+    border-color: v.$color-income-border;
+    .summary-card__label,
+    .summary-card__amount { color: v.$color-income; }
+  }
+
+  // Gastos: rosa
+  &--expense {
+    background: v.$color-expense-bg;
+    border-color: v.$color-expense;
+    .summary-card__label,
+    .summary-card__amount { color: v.$color-expense; }
+  }
+}

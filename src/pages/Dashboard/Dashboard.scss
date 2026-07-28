@@ -1,0 +1,55 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.dashboard {
+  @include m.flex(column, stretch, flex-start, v.$space-6);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: v.$space-6 v.$space-4;
+
+  &__hero {
+    @include m.panel-hero;
+    padding: v.$space-6;
+    @include m.flex(column, flex-start, center, v.$space-1);
+  }
+
+  &__greeting      { @include m.font-body(v.$fs-body-md, v.$fw-semibold, v.$color-text-secondary); }
+  &__balance-label { @include m.label; text-transform: uppercase; }
+  &__balance       { @include m.font-pixel(v.$fs-h1); }
+
+  &__summary       { @include m.grid(1fr 1fr, v.$space-3); }  // dos tarjetas lado a lado
+
+  &__recent        { @include m.flex(column, stretch, flex-start, v.$space-3); }
+  &__section-title { @include m.label; text-transform: uppercase; }
+
+  &__empty { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-muted); text-align: center; }
+  &__error { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-expense); }
+
+  &__fab {
+    position: fixed;
+    right: v.$space-6;
+    bottom: v.$space-8;
+    width: 56px;
+    height: 56px;
+    border-radius: v.$radius-md;
+    @include m.flex(row, center, center);
+    background: linear-gradient(180deg, v.$color-primary-gradient-top, v.$color-primary-gradient-bottom);
+    border: v.$border-width solid #FFD1E3;
+    box-shadow: v.$shadow-button;
+    color: #fff;
+    cursor: pointer;
+    z-index: v.$z-nav;
+
+    @include m.until(v.$breakpoint-tablet){
+      bottom: 88px;
+    }
+
+    svg { width: 24px; height: 24px; }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 v.$color-primary-shadow;
+    }
+  }
+}

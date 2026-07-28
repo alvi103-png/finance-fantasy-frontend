@@ -1,0 +1,87 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.new-tx {
+  @include m.flex(column, stretch, flex-start, v.$space-4);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: v.$space-6 v.$space-4;
+
+  &__header { @include m.flex(row, center, flex-start, v.$space-2); }
+
+  &__back {
+    @include m.flex(row, center, center);
+    background: transparent;
+    border: none;
+    color: v.$color-text-secondary;
+    cursor: pointer;
+    svg { width: 24px; height: 24px; }
+    &:hover { color: v.$color-primary; }
+  }
+
+  &__title  { @include m.font-pixel(v.$fs-h2); }
+
+  &__toggle { @include m.grid(1fr 1fr, v.$space-2); }
+
+  &__toggle-btn {
+    @include m.button-base;
+    background: v.$color-surface;
+    border: v.$border-width solid v.$color-border;
+    color: v.$color-text-secondary;
+    &.is-active--income  { background: v.$color-income-bg;  border-color: v.$color-income;  color: v.$color-income; }
+    &.is-active--expense { background: v.$color-expense-bg; border-color: v.$color-expense; color: v.$color-expense; }
+  }
+
+  &__amount-wrap {
+    @include m.flex(row, center, center, v.$space-2);
+    border-bottom: v.$border-width solid v.$color-border;
+    &:focus-within { border-color: v.$color-primary; }
+  }
+
+  &__amount {
+    @include m.font-pixel(v.$fs-h1);
+    text-align: center;
+    width: 160px;
+    background: transparent;
+    border: none;
+    color: v.$color-text-primary;
+    padding: v.$space-3 0;
+    &:focus { outline: none; }
+  }
+
+  &__currency {
+    @include m.font-pixel(v.$fs-h1, v.$color-text-muted);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    &.is-visible { opacity: 1; }
+  }
+
+  &__amount-wrap:focus-within &__currency { opacity: 1; }
+
+  &__field { @include m.flex(column, stretch, flex-start, v.$space-2); }
+  &__label { @include m.label; text-transform: uppercase; }
+
+  &__categories { @include m.grid(repeat(auto-fill, minmax(48px, 1fr)), v.$space-2); }
+
+  &__cat {
+    @include m.icon-badge;
+    width: 100%;
+    cursor: pointer;
+    color: v.$color-secondary-text;
+    svg { width: 20px; height: 20px; }
+    &.is-selected { border-color: v.$color-primary; color: v.$color-primary; }
+  }
+
+  &__input {
+    @include m.input-base;
+    width: 100%;
+
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+    }
+  }
+
+  &__error { @include m.font-body(v.$fs-caption, v.$fw-medium, v.$color-expense); }
+}

@@ -25,10 +25,10 @@ async function request(endpoint, { method = "GET", body} = {}) {
         ...(body && { body: JSON.stringify(body) }),
     });
 
+    if (response.status === 204) return null;
+
     const data = await response.json();
-
     if (!response.ok) {
-
         throw new Error(data.message || "Ocurrió un error inesperado.");
     }
     return data;
@@ -56,4 +56,33 @@ export function registerUser({ name, email, password }) {
 
 export function loginUser({ email, password }) {
     return post("/auth/login", { email, password});
+}
+
+export function getSummary({ year, month }) {
+    return request(`/transactions/summary?year=${year}&month=${month}`);
+}
+
+export function getTransactions({ year, month, category } = {}) {
+    const params = new URLSearchParams();
+    if (year) params.append("year", year);
+    if (month) params.append("month", month);
+    if (category) params.append("category", category);
+    const qs = params.toString();
+    return request(`/transactions${qs ? `?${qs}` : ""}`)
+}
+
+export function createTransaction(payload) {
+    return request("/transactions", {method: "POST", body: payload});
+}
+
+export function deleteTransaction(id) {
+    return request(`/transactions/${id}`, {method: "DELETE"});
+}
+
+export function getTransaction(id) {
+    return request(`/transactions/${id}`);
+}
+
+export function updateTransaction(id, payload) {
+    return request(`/transactions/${id}`, { method: "PUT", body: payload});
 }
