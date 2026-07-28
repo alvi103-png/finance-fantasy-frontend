@@ -1,0 +1,109 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.landing {
+  min-height: 100vh;
+  padding: v.$space-8 v.$space-4 v.$space-16;
+  background: v.$color-bg-app;
+  @include m.flex(column, center, flex-start, v.$space-12);
+}
+
+// --- Animación de la gema: latido (scale) + halo que crece ---
+@keyframes gem-pulse {
+  0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 6px  rgba(255, 111, 165, 0.45)); }
+  50%      { transform: scale(1.06); filter: drop-shadow(0 0 18px rgba(255, 111, 165, 0.9));  }
+}
+
+.landing__hero {
+  max-width: 520px;
+  text-align: center;
+  @include m.flex(column, center, flex-start, v.$space-4);
+}
+
+.landing__gem {
+  width: 140px;
+  height: auto;
+  animation: gem-pulse 2.4s ease-in-out infinite;
+}
+
+.landing__title    { @include m.font-pixel(v.$fs-h1, v.$color-text-primary); }
+.landing__subtitle { @include m.font-body(v.$fs-body-md, v.$fw-medium, v.$color-text-secondary); line-height: 1.5; }
+
+.landing__cta {
+  width: 100%;
+  max-width: 300px;
+  margin-top: v.$space-2;
+  @include m.flex(column, stretch, flex-start, v.$space-3);
+
+  @include m.from(v.$breakpoint-tablet) {
+    max-width: none;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.landing__btn {
+  text-decoration: none;
+
+  &--primary   { @include m.button-primary; }
+  &--secondary { @include m.button-secondary; }
+}
+
+
+.landing__section {
+  width: 100%;
+  max-width: 900px;
+  @include m.flex(column, center, flex-start, v.$space-6);
+}
+
+.landing__section-title { @include m.font-pixel(v.$fs-h2, v.$color-text-label); text-align: center; }
+
+.landing__features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-4;
+  width: 100%;
+
+  @include m.from(v.$breakpoint-tablet) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.landing__feature {
+  text-align: center;
+  @include m.card;
+  @include m.flex(column, center, flex-start, v.$space-2);
+}
+
+.landing__feature-icon {
+  color: v.$color-primary-light;
+  @include m.icon-badge(v.$color-secondary-surface, 52px);
+}
+
+.landing__feature-title { @include m.font-pixel(v.$fs-h3, v.$color-text-primary); }
+.landing__feature-text  { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-secondary); line-height: 1.5; }
+
+
+.landing__steps {
+  width: 100%;
+  max-width: 520px;
+  @include m.flex(column, stretch, flex-start, v.$space-3);
+}
+
+.landing__step {
+  @include m.card(v.$space-4);
+  @include m.flex(row, center, flex-start, v.$space-4);
+}
+
+.landing__step-num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: v.$color-bg-section;
+  border: v.$border-width-thick solid v.$color-primary;
+  border-radius: v.$radius-md;
+  @include m.font-pixel(v.$fs-h3, v.$color-primary);
+  @include m.flex(row, center, center);
+}
+
+.landing__step-title { @include m.font-pixel(v.$fs-h3, v.$color-text-primary); }
+.landing__step-text  { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-secondary); line-height: 1.4; }
+
