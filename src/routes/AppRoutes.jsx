@@ -18,11 +18,14 @@ const AppRoutes = () => {
                 <Route path="/dashboard" element={
                     <ProtectedRoute><Dashboard /></ProtectedRoute>
                 } />
-                <Route path="/transactions/:id/edit" element={
+                <Route path="/new" element={
                     <ProtectedRoute><NewTransaction /></ProtectedRoute>
                 } />
-                <Route path="/transactions/" element={
+                <Route path="/transactions" element={
                     <ProtectedRoute><Transactions /></ProtectedRoute>
+                } />
+                <Route path="/transactions/:id/edit" element={
+                    <ProtectedRoute><NewTransaction /></ProtectedRoute>
                 } />
                 <Route path="/summary" element={
                     <ProtectedRoute><Statistics /></ProtectedRoute>
