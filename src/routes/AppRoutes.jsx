@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import App from '../App'
+import Landing from "../pages/Landing/Landing.jsx";
 import Login from '../pages/Login.jsx'
 import Register from '../pages/Register.jsx'
 import Dashboard from '../pages/Dashboard/Dashboard.jsx'
@@ -11,8 +12,8 @@ import Statistics from '../pages/Statistics/Statistics.jsx'
 const AppRoutes = () => {
     return (
         <Routes>
+            <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route element={<App />}>
                 <Route path="/dashboard" element={
