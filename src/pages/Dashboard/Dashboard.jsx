@@ -13,7 +13,7 @@ import {
 } from 'pixelarticons/react'
 import {useEffect, useState} from "react";
 import {getSummary, getTransactions} from "../../services/api.js";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import TransactionItem from "../../components/finance/TransactionItem/TransactionItem.jsx";
 import './Dashboard.scss'
 
@@ -34,14 +34,14 @@ const CATEGORY_ICONS = {
 const toEuro = (n) =>
     new Intl.NumberFormat("es-ES", {
         style: "currency", currency: "EUR", minimumFractionDigits: 0,
-    }). format(n ?? 0);
+    }).format(n ?? 0);
 
 function Dashboard() {
     const name = localStorage.getItem("name");
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
-    const monthLabel = now.toLocaleDateString("es-ES", { month: "long"});
+    const monthLabel = now.toLocaleDateString("es-ES", {month: "long"});
     const monthCapitalized = monthLabel.charAt(0).toUpperCase() + monthLabel.slice(1);
 
     const [summary, setSummary] = useState(null);
@@ -49,7 +49,7 @@ function Dashboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         async function load() {
             try {
@@ -66,6 +66,7 @@ function Dashboard() {
                 setLoading(false);
             }
         }
+
         load();
     }, [year, month]);
 
@@ -73,9 +74,8 @@ function Dashboard() {
     if (error) return <div className="dashboard"><p className="dashboard__error">{error}</p></div>;
 
     const recent = [...transactions]
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(0, 4);
-
+        .sort((a, b) => new Date(b.date) - new Date(a.date) || b.id - a.id)
+        .slice(0, 10);
 
 
     return (
@@ -87,8 +87,8 @@ function Dashboard() {
             </section>
 
             <section className="dashboard__summary">
-                <SummaryCard variant="income" label="Ingresos" amount={summary?.totalIngresos} />
-                <SummaryCard variant="expense" label="Gastos" amount={summary?.totalGastos} />
+                <SummaryCard variant="income" label="Ingresos" amount={summary?.totalIngresos}/>
+                <SummaryCard variant="expense" label="Gastos" amount={summary?.totalGastos}/>
             </section>
 
             <section className="dashboard__recent">
@@ -97,29 +97,40 @@ function Dashboard() {
                 {recent.length === 0 ? (
                     <p className="dashboard__empty">Aún no hay movimientos este mes. ¡Registra el primero!</p>
                 ) : (
-                    recent.map((t) => {
-                        const Icon = CATEGORY_ICONS[t.category] ?? Sunglasses;
-                        return (
-                            <TransactionItem
-                                key={t.id}
-                                icon={<Icon/>}
-                                title={t.description}
-                                category={t.categoryLabel}
-                                date={t.date}
-                                type={t.type === "INGRESO" ? "income" : "expense"}
-                                amount={t.amount}
-                            />
-                        );
-                    }))
-                }
+                    <>
+                        {recent.map((t) => {
+                            const Icon = CATEGORY_ICONS[t.category] ?? Sunglasses;
+                            return (
+                                <TransactionItem
+                                    key={t.id}
+                                    icon={<Icon/>}
+                                    title={t.description}
+                                    category={t.categoryLabel}
+                                    date={t.date}
+                                    type={t.type === "INGRESO" ? "income" : "expense"}
+                                    amount={t.amount}
+                                />
+                            );
+                        })}
+
+                        {transactions.length > recent.length && (
+                        <button
+                            className="dashboard__see-all"
+                            onClick={() => navigate("/transactions")}
+                        >
+                            Ver todas ({transactions.length})
+                        </button>
+                        )}
+                    </>
+                )}
             </section>
 
             <button
                 className="dashboard__fab"
                 onClick={() => navigate("/new")}
                 aria-label="Nueva transacción"
-                >
-                <Plus />
+            >
+                <Plus/>
             </button>
         </div>
     );

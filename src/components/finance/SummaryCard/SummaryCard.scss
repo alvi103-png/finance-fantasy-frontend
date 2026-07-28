@@ -6,6 +6,8 @@
   border-radius: v.$radius-lg;
   border: v.$border-width solid v.$color-border;
   padding: v.$space-3 v.$space-4;
+  min-width: 0;
+  overflow: hidden;
 
   &__label {
     @include m.font-pixel(v.$fs-micro);
@@ -14,6 +16,10 @@
 
   &__amount {
     @include m.font-pixel(v.$fs-body-lg);
+    font-size: clamp(14px, 4.5vw, #{v.$fs-body-lg});
+    font-family: v.$font-body;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   // Ingresos: verde
