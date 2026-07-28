@@ -36,23 +36,4 @@
     &:hover  { color: v.$color-text-primary; }
     &.active { color: v.$color-primary; background: v.$color-secondary-surface; }
   }
-
-  &__logout {
-    @include m.flex(row, center, center, v.$space-2);
-    background: transparent;
-    border: none;
-    color: v.$color-text-secondary;
-    cursor: pointer;
-    svg { width: 22px; height: 22px; }
-    &:hover { color: v.$color-primary; }
-
-    @include m.from(v.$breakpoint-tablet) {
-      @include m.button-danger(40px);
-    }
-  }
-
-  &__logout-text {
-    display: none;
-    @include m.from(v.$breakpoint-tablet) { display: inline; }
-  }
 }

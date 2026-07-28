@@ -86,3 +86,11 @@ export function getTransaction(id) {
 export function updateTransaction(id, payload) {
     return request(`/transactions/${id}`, { method: "PUT", body: payload});
 }
+
+export function getProfile() {
+    return request(`/users/me`);
+}
+
+export function deleteAccount() {
+    return request(`/users/me`, {method: "DELETE"});
+}

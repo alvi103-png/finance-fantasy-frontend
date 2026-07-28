@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home, Notes, ChartColumnDecreasing, Plus } from "pixelarticons/react";
+import { Home, Notes, ChartColumnDecreasing, Plus, User } from "pixelarticons/react";
 import "./BottomNav.scss";
 
 function BottomNav() {
@@ -24,6 +24,10 @@ function BottomNav() {
                 <NavLink to="/summary" className="bottom-nav__item">
                     <ChartColumnDecreasing />
                     <span className="bottom-nav__label">Stats</span>
+                </NavLink>
+                <NavLink to="/profile" className="bottom-nav__item">
+                    <User />
+                    <span className="bottom-nav__label">Gamer</span>
                 </NavLink>
             </div>
         </nav>
