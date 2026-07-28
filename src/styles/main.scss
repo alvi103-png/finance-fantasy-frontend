@@ -1,4 +1,10 @@
 @use 'reset';
+@use 'mixins' as m;
 @use 'variables' as v;
 @use 'auth';
 
+.app-main {
+  @include m.until(v.$breakpoint-tablet) {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+}
