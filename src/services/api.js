@@ -75,6 +75,14 @@ export function createTransaction(payload) {
     return request("/transactions", {method: "POST", body: payload});
 }
 
-export function deleteTransaction(Id) {
-    return request(`/transactions/${Id}`, {method: "DELETE"});
+export function deleteTransaction(id) {
+    return request(`/transactions/${id}`, {method: "DELETE"});
+}
+
+export function getTransaction(id) {
+    return request(`/transactions/${id}`);
+}
+
+export function updateTransaction(id, payload) {
+    return request(`/transactions/${id}`, { method: "PUT", body: payload});
 }

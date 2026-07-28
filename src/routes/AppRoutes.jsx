@@ -24,6 +24,9 @@ const AppRoutes = () => {
                 <Route path="/transactions" element={
                     <ProtectedRoute><Transactions /></ProtectedRoute>
                 } />
+                <Route path="/transactions/:id/edit" element={
+                    <ProtectedRoute><NewTransaction /></ProtectedRoute>
+                } />
                 <Route path="/summary" element={
                     <ProtectedRoute><Statistics /></ProtectedRoute>
                 } />
