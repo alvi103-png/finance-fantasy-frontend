@@ -1,8 +1,0 @@
-@use './styles/variables' as v;
-@use './styles/mixins' as m;
-
-.app-main {
-  @include m.until(v.$breakpoint-tablet) {
-    padding-bottom: 72px;
-  }
-}

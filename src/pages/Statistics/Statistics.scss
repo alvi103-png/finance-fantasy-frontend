@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   gap: v.$space-6;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
   padding: v.$space-4;
 
   &__hero { text-align: center; }
@@ -16,7 +19,7 @@
 
   &__subtitle {
     margin-top: v.$space-1;
-    font-size: v.$fs-caption;
+    font-size: v.$fs-body-lg;
     color: v.$color-text-secondary;
   }
 

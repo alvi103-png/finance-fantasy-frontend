@@ -26,30 +26,12 @@
   &__empty { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-muted); text-align: center; }
   &__error { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-expense); }
 
-  &__fab {
-    position: fixed;
-    right: v.$space-6;
-    bottom: v.$space-8;
-    width: 56px;
-    height: 56px;
-    border-radius: v.$radius-md;
-    @include m.flex(row, center, center);
-    background: linear-gradient(180deg, v.$color-primary-gradient-top, v.$color-primary-gradient-bottom);
-    border: v.$border-width solid #FFD1E3;
-    box-shadow: v.$shadow-button;
-    color: #fff;
+  &__see-all {
+    @include m.font-pixel(v.$fs-micro);
+    color: v.$color-primary;
+    background: transparent;
+    padding: v.$space-2;
+    text-align: center;
     cursor: pointer;
-    z-index: v.$z-nav;
-
-    @include m.until(v.$breakpoint-tablet){
-      bottom: 88px;
-    }
-
-    svg { width: 24px; height: 24px; }
-
-    &:active {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 v.$color-primary-shadow;
-    }
   }
 }

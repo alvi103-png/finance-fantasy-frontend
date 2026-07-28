@@ -54,7 +54,7 @@ function Login() {
                     </div>
 
                     <button className="auth-form__button" type="submit" disabled={loading}>
-                        {loading ? "Entrando..." : "Jugar gratis"}
+                        {loading ? "Entrando..." : "Iniciar sesión"}
                     </button>
 
                     {error && <p className="auth-form__msg auth-form__msg--error">{error}</p>}

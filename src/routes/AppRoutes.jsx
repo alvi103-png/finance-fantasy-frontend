@@ -8,6 +8,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import NewTransaction from '../pages/NewTransaction/NewTransaction.jsx'
 import Transactions from '../pages/Transactions/Transactions.jsx'
 import Statistics from '../pages/Statistics/Statistics.jsx'
+import Profile from "../pages/Profile/Profile.jsx";
 
 const AppRoutes = () => {
     return (
@@ -30,6 +31,9 @@ const AppRoutes = () => {
                 } />
                 <Route path="/summary" element={
                     <ProtectedRoute><Statistics /></ProtectedRoute>
+                } />
+                <Route path="/profile" element={
+                    <ProtectedRoute><Profile /></ProtectedRoute>
                 } />
             </Route>
         </Routes>

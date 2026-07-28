@@ -38,7 +38,7 @@ function Statistics() {
             }
         }
     load();
-}, [year, month]);
+},[year, month]);
 
     useEffect(() => {
         if (!summary) return;
@@ -67,7 +67,7 @@ function Statistics() {
     return (
         <div className="stats">
             <header className="stats__hero">
-                <h1 className="stats__title">Resumen</h1>
+                <h1 className="stats__title">Stats</h1>
                 <p className="stats__subtitle">{monthCapitalized} {year}</p>
                 <p className="stats__balance">{toEuro(summary?.balance)}</p>
             </header>

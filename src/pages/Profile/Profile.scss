@@ -1,0 +1,56 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.profile {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: v.$space-6 v.$space-4;
+  @include m.flex(column, stretch, flex-start, v.$space-6);
+
+  &__card {
+    @include m.card(v.$space-6);
+    @include m.flex(column, center, center, v.$space-2);
+    text-align: center;
+  }
+
+  &__avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: v.$radius-lg;
+    background: v.$color-secondary-surface;
+    border: v.$border-width-thick solid v.$color-primary;
+    @include m.flex(row, center, center);
+    svg { width: 40px; height: 40px; color: v.$color-primary; }
+  }
+
+  &__name  { @include m.font-pixel(v.$fs-h2, v.$color-text-primary); }
+  &__email { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-secondary); }
+
+  &__actions { @include m.flex(column, stretch, flex-start, v.$space-3); }
+
+  &__btn {
+    @include m.flex(row, center, center, v.$space-2);
+    height: 48px;
+    border-radius: v.$radius-lg;
+    font-family: v.$font-pixel;
+    font-size: v.$fs-micro;
+    cursor: pointer;
+    svg { width: 18px; height: 18px; }
+
+    &--logout {
+      background: v.$color-secondary-surface;
+      border: v.$border-width solid v.$color-secondary;
+      color: v.$color-secondary-text;
+    }
+    &--danger {
+      background: v.$color-danger-bg;
+      border: v.$border-width solid v.$color-danger-border;
+      color: v.$color-primary-light;
+    }
+  }
+
+  &__error {
+    @include m.font-body(v.$fs-caption, v.$fw-medium, v.$color-primary-light);
+    text-align: center;
+  }
+}
