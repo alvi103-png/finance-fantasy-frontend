@@ -1,13 +1,6 @@
 import './Landing.scss'
 import { Link } from "react-router-dom";
-import { Coins, Eye, Gamepad} from "pixelarticons/react";
 import crystal from "../../assets/crystal.png";
-
-const FEATURES = [
-    { Icon: Coins,   title: "Registra",  text: "Anota ingresos y gastos en segundos, sin fricción." },
-    { Icon: Eye,     title: "Visualiza", text: "Tu balance y tus gastos por categoría, claros de un vistazo." },
-    { Icon: Gamepad, title: "Gamifica",  text: "Estética retro que hace divertido controlar tu dinero." },
-];
 
 const STEPS = [
     { n: 1, color: "#FF6FA5", title: "Crea tu cuenta",           text: "Regístrate y crea tu perfil de aventurera financiera." },
