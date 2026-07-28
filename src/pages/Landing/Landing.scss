@@ -8,7 +8,6 @@
   @include m.flex(column, center, flex-start, v.$space-12);
 }
 
-// --- Animación de la gema: latido (scale) + halo que crece ---
 @keyframes gem-pulse {
   0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 6px  rgba(255, 111, 165, 0.45)); }
   50%      { transform: scale(1.06); filter: drop-shadow(0 0 18px rgba(255, 111, 165, 0.9));  }
@@ -57,30 +56,6 @@
 }
 
 .landing__section-title { @include m.font-pixel(v.$fs-h2, v.$color-text-label); text-align: center; }
-
-.landing__features {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: v.$space-4;
-  width: 100%;
-
-  @include m.from(v.$breakpoint-tablet) { grid-template-columns: repeat(3, 1fr); }
-}
-
-.landing__feature {
-  text-align: center;
-  @include m.card;
-  @include m.flex(column, center, flex-start, v.$space-2);
-}
-
-.landing__feature-icon {
-  color: v.$color-primary-light;
-  @include m.icon-badge(v.$color-secondary-surface, 52px);
-}
-
-.landing__feature-title { @include m.font-pixel(v.$fs-h3, v.$color-text-primary); }
-.landing__feature-text  { @include m.font-body(v.$fs-body, v.$fw-medium, v.$color-text-secondary); line-height: 1.5; }
-
 
 .landing__steps {
   width: 100%;
