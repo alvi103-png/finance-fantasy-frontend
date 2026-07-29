@@ -6,6 +6,7 @@ import HealthBar from "../../components/ui/HealthBar/HealthBar.jsx";
 import StatBar from "../../components/ui/StatBar/StatBar.jsx";
 import {ChevronLeft, ChevronRight} from "pixelarticons/react";
 import {useMonthCursor} from "../../hooks/useMonthCursor.js";
+import MonthlyHistoryChart from "../../components/finance/MonthlyHistoryChart/MonthlyHistoryChart.jsx";
 
 const toEuro = (n) =>
     new Intl.NumberFormat("es-ES", {
@@ -17,7 +18,7 @@ const COLORS = Object.fromEntries(CATEGORIES.map((c) => [c.value, c.color]));
 
 function Statistics() {
 
-    const { year, month, label, isCurrentMonth, shiftMonth } = useMonthCursor();
+    const { year, month, label, isCurrentMonth, shiftMonth, goToMonth } = useMonthCursor();
     const [summary, setSummary] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -141,6 +142,16 @@ function Statistics() {
                 </section>
                 </>
             )}
+
+            <section className="stats__panel">
+                <h2 className="stats__panel-title">Últimos 12 meses</h2>
+                <MonthlyHistoryChart
+                    months={12}
+                    activeYear={year}
+                    activeMonth={month}
+                    onSelectMonth={goToMonth}
+                />
+            </section>
 
         </div>
     );
