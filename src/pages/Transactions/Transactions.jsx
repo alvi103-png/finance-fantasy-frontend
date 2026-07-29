@@ -1,5 +1,5 @@
 import {CATEGORIES} from "../../data/categories.jsx";
-import { ArrowLeft, Sunglasses} from "pixelarticons/react";
+import { ArrowLeft, Sunglasses, ChevronLeft, ChevronRight } from "pixelarticons/react";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {deleteTransaction, getTransactions} from "../../services/api.js";
@@ -7,27 +7,24 @@ import Modal from "../../components/ui/Modal/Modal.jsx";
 import TransactionItem from "../../components/finance/TransactionItem/TransactionItem.jsx";
 import "./Transactions.scss"
 import Dropdown from "../../components/ui/Dropdown/Dropdown.jsx";
-
+import { useMonthCursor } from "../../hooks/useMonthCursor.js";
 
 const iconFor = (value) => {
     const cat = CATEGORIES.find((c) => c.value === value);
     const Icon = cat ? cat.Icon : Sunglasses;
     return <Icon />;
+
 };
 
 function Transactions() {
-    const navigate = useNavigate();
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
 
+    const navigate = useNavigate();
+    const { year, month, label, isCurrentMonth, shiftMonth } = useMonthCursor();
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
     const [typeFilter, setTypeFilter] = useState("TODOS");
     const [categoryFilter, setCategoryFilter] = useState("TODAS");
-
     const [toDelete, setToDelete] = useState(null);
     const [deleting, setDeleting] = useState(false);
 
@@ -71,11 +68,37 @@ function Transactions() {
 
     return (
         <div className="transactions">
+
             <div className="transactions__header">
                 <button className="transactions__back" onClick={() => navigate("/dashboard")} aria-label="Volver">
                     <ArrowLeft />
                 </button>
                 <h1 className="transactions__title">Movs</h1>
+            </div>
+
+            <div className="transactions__month-nav">
+                <button
+                    type="button"
+                    className="transactions__nav-btn"
+                    onClick={() => shiftMonth(-1)}
+                    aria-label="Mes anterior"
+                >
+                    <ChevronLeft />
+                </button>
+
+                <span className="transactions__month-label">
+                        {label}
+                    </span>
+
+                <button
+                    type="button"
+                    className="transactions__nav-btn"
+                    onClick={() => shiftMonth(1)}
+                    disabled={isCurrentMonth}   /* no viajamos al futuro */
+                    aria-label="Mes siguiente"
+                >
+                    <ChevronRight />
+                </button>
             </div>
 
             <div className="transactions__filters">
