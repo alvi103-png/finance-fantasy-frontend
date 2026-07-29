@@ -6,6 +6,9 @@ Interfaz web de finanzas personales con estética *gamer / pixel art*, pensada p
 
 ## Demo
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/11251d7d-e4d8-43c8-8148-03908fc014e6" width="300" alt="Demo de Finance Fantasy" />
+</p>
 
 ---
 
