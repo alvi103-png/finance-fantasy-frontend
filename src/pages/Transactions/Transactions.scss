@@ -36,6 +36,29 @@
     &.is-active { background: v.$color-primary; border-color: v.$color-primary; color: #fff; }
   }
 
+  &__month-nav {
+    @include m.flex(row, center, center, v.$space-3);
+  }
+
+  &__nav-btn {
+    @include m.flex(row, center, center);
+    padding: v.$space-1;
+    color: v.$color-text-label;
+    background: v.$color-surface;
+    border: v.$border-width solid v.$color-border;
+    border-radius: v.$radius-sm;
+    cursor: pointer;
+    svg { width: 20px; height: 20px; }
+
+    &:disabled { opacity: 0.35; cursor: not-allowed; } // en el mes actual
+  }
+
+  &__month-label {
+    @include m.font-pixel(v.$fs-h3);
+    color: v.$color-text-primary;
+  }
+
+
   &__select { @include m.input-base; width: 100%; }
 
   &__list  { @include m.flex(column, stretch, flex-start, v.$space-3); }
