@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const HOY = new Date();
 const CURRENT = { year: HOY.getFullYear(), month: HOY.getMonth() + 1 };
-
 /**
  * Maneja el mes que se está viendo, con navegación ‹ mes ›.
  * Reutilizable en Stats y Movs
@@ -23,6 +22,8 @@ export function useMonthCursor() {
             return { year: d.getFullYear(), month: d.getMonth() + 1 };
         });
     };
+    
+    const goToMonth = (year, month) => setCursor({ year, month });
 
-    return { year, month, label, isCurrentMonth, shiftMonth };
+    return { year, month, label, isCurrentMonth, shiftMonth, goToMonth };
 }
