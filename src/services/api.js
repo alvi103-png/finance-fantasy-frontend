@@ -94,3 +94,7 @@ export function getProfile() {
 export function deleteAccount() {
     return request(`/users/me`, {method: "DELETE"});
 }
+
+export function getSummaryHistory(months = 12) {
+    return request(`/transactions/summary/history?months=${months}`);
+}
