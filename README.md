@@ -7,6 +7,10 @@ Interfaz web de finanzas personales con estética *gamer / pixel art*, pensada p
 ## Demo
 
 
+https://github.com/user-attachments/assets/9662b7b8-9d82-4700-a1aa-408a64c4f6aa
+
+
+
 ---
 
 ## Stack
